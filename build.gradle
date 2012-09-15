@@ -1,0 +1,28 @@
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'idea'
+
+mainClassName = "com.jamesward.Webapp"
+applicationName = "app"
+
+repositories {
+    mavenCentral()
+}
+
+
+repositories {
+  maven {
+    url 'http://webjars.github.com/m2'
+  }
+}
+
+dependencies {
+    compile 'org.webjars:jquery:1.8.1'
+    compile 'org.eclipse.jetty:jetty-servlet:8.1.7.v20120910'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.2'
+}
+
+task stage(dependsOn: ['clean', 'installApp'])
